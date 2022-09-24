@@ -1,0 +1,12 @@
+/* Sombra del nav */
+.shadowNav {
+  box-shadow: 11px 11px 16px #dcdcdc, -11px -11px 16px #e4e4e4 !important;
+}
+/* texto Nav */
+.txtNav {
+  font-size: 1.1em !important;
+}
+/* Div del carrito */
+.imgCarrito {
+  width: 70% !important;
+}
