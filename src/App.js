@@ -7,7 +7,7 @@ import {ItemListContainer} from './components/ItemListContainer/ItemListContaine
 function App() {
   return (<>
     <NavBar />
-    <ItemListContainer texto="Sitio en construcción..." descripcion="Proximamente, mas avances.." />
+    <ItemListContainer texto="Sitio en construcción..." descripcion="Proximamente, mas avances..." />
     </>
   );
 }
