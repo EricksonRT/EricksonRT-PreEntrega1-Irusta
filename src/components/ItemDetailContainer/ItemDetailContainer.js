@@ -1,34 +1,32 @@
-import { ItemList } from '../ItemList/ItemList';
-
 import { useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { ItemList } from '../ItemList/ItemList';
+import { Item } from '../Item/Item';
 
-export const ItemListContainer = () => {
-  const [datos, setDatos] = useState([]);
+export const ItemDetailContainer = () => {
+  const [producto, Setproducto] = useState(0);
   const [loading, setLoading] = useState(true);
   // Otro hook para capturar los datos de las categorias por url
-  const { idCategoria } = useParams();
-  // console.log(idCategoria);
+  const { idProducto } = useParams();
   useEffect(() => {
-    if (idCategoria) {
+    if (idProducto) {
       // Si hay categoria, filtra por seleccionado, sino trae todo el catologo por defecto
       ItemList()
-        .then((datos) =>
-          setDatos(datos.filter((datos) => datos.categoria === idCategoria))
+        .then((productos) =>
+          Setproducto(
+            productos.filter(
+              (productos) => productos.id === parseInt(idProducto)
+            )
+          )
         )
         .catch((err) => console.log(err))
         .finally(() => {
           setLoading(false);
         });
     } else {
-      ItemList()
-        .then((datos) => setDatos(datos))
-        .catch((err) => console.log(err))
-        .finally(() => {
-          setLoading(false);
-        });
+      alert('error');
     }
-  }, [idCategoria]);
+  }, [idProducto]);
   return (
     <>
       {/* Componente del item */}
@@ -49,24 +47,15 @@ export const ItemListContainer = () => {
                 </div>
               </>
             ) : (
-              datos.map((datos) => (
-                <div className="card cardImg" key={datos.id}>
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive
-                        ? 'text-decoration-none text-body'
-                        : 'text-decoration-none text-body'
-                    }
-                    to={'/item/' + datos.id}
-                  >
-                    <img
-                      className="card-img-top"
-                      src={datos.img}
-                      alt={'img-avatar/' + datos.nombre}
-                    />
-                    <h2>{datos.nombre}</h2>
-                  </NavLink>
-                </div>
+              producto.map((producto) => (
+                <Item
+                  key={producto.id}
+                  id={producto.id}
+                  nombre={producto.nombre}
+                  descripcion={producto.descripcion}
+                  stock={producto.stock}
+                  img={producto.img}
+                />
               ))
             )}
           </div>
