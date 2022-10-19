@@ -2,6 +2,7 @@ import { ItemList } from '../ItemList/ItemList';
 
 import { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
+import { Loading } from '../Loading/Loading';
 
 export const ItemListContainer = () => {
   const [datos, setDatos] = useState([]);
@@ -36,18 +37,7 @@ export const ItemListContainer = () => {
         <div className="col">
           <div className="row d-flex justify-content-center">
             {loading ? (
-              <>
-                {/* <div className="">CARGANDO.........</div> */}
-                <div className="spinner-grow text-secondary" role="status">
-                  <span className="visually-hidden"></span>
-                </div>
-                <div className="spinner-grow text-secondary" role="status">
-                  <span className="visually-hidden"></span>
-                </div>
-                <div className="spinner-grow text-secondary" role="status">
-                  <span className="visually-hidden"></span>
-                </div>
-              </>
+              <Loading />
             ) : (
               datos.map((datos) => (
                 <div className="card cardImg" key={datos.id}>

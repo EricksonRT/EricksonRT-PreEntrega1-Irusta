@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ItemList } from '../ItemList/ItemList';
 import { Item } from '../Item/Item';
+import { Loading } from '../Loading/Loading';
 
 export const ItemDetailContainer = () => {
   const [producto, Setproducto] = useState(0);
@@ -34,18 +35,7 @@ export const ItemDetailContainer = () => {
         <div className="col">
           <div className="row d-flex justify-content-center">
             {loading ? (
-              <>
-                {/* <div className="">CARGANDO.........</div> */}
-                <div className="spinner-grow text-secondary" role="status">
-                  <span className="visually-hidden"></span>
-                </div>
-                <div className="spinner-grow text-secondary" role="status">
-                  <span className="visually-hidden"></span>
-                </div>
-                <div className="spinner-grow text-secondary" role="status">
-                  <span className="visually-hidden"></span>
-                </div>
-              </>
+              <Loading />
             ) : (
               producto.map((producto) => (
                 <Item
