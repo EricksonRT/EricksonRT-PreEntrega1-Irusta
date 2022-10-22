@@ -1,8 +1,9 @@
-import { ItemList } from '../ItemList/ItemList';
+import { Get_Items } from '../Get_Items/Get_Items';
 
 import { useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Loading } from '../Loading/Loading';
+import { ItemList } from '../ItemList/ItemList';
 
 export const ItemListContainer = () => {
   const [datos, setDatos] = useState([]);
@@ -13,7 +14,7 @@ export const ItemListContainer = () => {
   useEffect(() => {
     if (idCategoria) {
       // Si hay categoria, filtra por seleccionado, sino trae todo el catologo por defecto
-      ItemList()
+      Get_Items()
         .then((datos) =>
           setDatos(datos.filter((datos) => datos.categoria === idCategoria))
         )
@@ -22,7 +23,7 @@ export const ItemListContainer = () => {
           setLoading(false);
         });
     } else {
-      ItemList()
+      Get_Items()
         .then((datos) => setDatos(datos))
         .catch((err) => console.log(err))
         .finally(() => {
@@ -36,29 +37,7 @@ export const ItemListContainer = () => {
       <div className="container">
         <div className="col">
           <div className="row d-flex justify-content-center">
-            {loading ? (
-              <Loading />
-            ) : (
-              datos.map((datos) => (
-                <div className="card cardImg" key={datos.id}>
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive
-                        ? 'text-decoration-none text-body'
-                        : 'text-decoration-none text-body'
-                    }
-                    to={'/item/' + datos.id}
-                  >
-                    <img
-                      className="card-img-top"
-                      src={datos.img}
-                      alt={'img-avatar/' + datos.nombre}
-                    />
-                    <h2>{datos.nombre}</h2>
-                  </NavLink>
-                </div>
-              ))
-            )}
+            {loading ? <Loading /> : <ItemList datos={datos} />}
           </div>
         </div>
       </div>

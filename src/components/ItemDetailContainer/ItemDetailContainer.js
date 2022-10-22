@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ItemList } from '../ItemList/ItemList';
+import { Get_Items } from '../Get_Items/Get_Items';
 import { Item } from '../Item/Item';
 import { Loading } from '../Loading/Loading';
 
@@ -12,7 +12,7 @@ export const ItemDetailContainer = () => {
   useEffect(() => {
     if (idProducto) {
       // Si hay categoria, filtra por seleccionado, sino trae todo el catologo por defecto
-      ItemList()
+      Get_Items()
         .then((productos) =>
           Setproducto(
             productos.filter(
