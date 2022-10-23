@@ -1,5 +1,6 @@
-// importacion de la ruta del logo
+// Importo link para darle redireccionamiento a cada articulo que se muestre
 import { Link, NavLink } from 'react-router-dom';
+// importacion de la ruta del logo
 import logo from '../../assets/img/UrbanStorelogo.png';
 import { CartWidget } from '../CartWidget/CartWidget';
 // Centrado del menu

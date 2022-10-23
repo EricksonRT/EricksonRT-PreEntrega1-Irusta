@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Get_Items } from '../Get_Items/Get_Items';
-import { Item } from '../Item/Item';
+import { ItemDetail } from '../ItemDetail/ItemDetail';
 import { Loading } from '../Loading/Loading';
 
 export const ItemDetailContainer = () => {
@@ -11,13 +11,11 @@ export const ItemDetailContainer = () => {
   const { idProducto } = useParams();
   useEffect(() => {
     if (idProducto) {
-      // Si hay categoria, filtra por seleccionado, sino trae todo el catologo por defecto
+      // Si hay categoria, en vez de filtrar, lo busca directamente y devuelve un obj para pasarlo por prop, sino trae todo el catologo por defecto
       Get_Items()
         .then((productos) =>
           Setproducto(
-            productos.filter(
-              (productos) => productos.id === parseInt(idProducto)
-            )
+            productos.find((productos) => productos.id === parseInt(idProducto))
           )
         )
         .catch((err) => console.log(err))
@@ -37,16 +35,14 @@ export const ItemDetailContainer = () => {
             {loading ? (
               <Loading />
             ) : (
-              producto.map((producto) => (
-                <Item
-                  key={producto.id}
-                  id={producto.id}
-                  nombre={producto.nombre}
-                  descripcion={producto.descripcion}
-                  stock={producto.stock}
-                  img={producto.img}
-                />
-              ))
+              <ItemDetail
+                id={producto.id}
+                nombre={producto.nombre}
+                descripcion={producto.descripcion}
+                stock={producto.stock}
+                img={producto.img}
+                productoconFin
+              />
             )}
           </div>
         </div>
