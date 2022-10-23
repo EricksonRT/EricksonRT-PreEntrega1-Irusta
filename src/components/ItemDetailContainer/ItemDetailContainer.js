@@ -41,7 +41,6 @@ export const ItemDetailContainer = () => {
                 descripcion={producto.descripcion}
                 stock={producto.stock}
                 img={producto.img}
-                productoconFin
               />
             )}
           </div>
