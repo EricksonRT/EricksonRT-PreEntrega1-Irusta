@@ -16,4 +16,5 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
+// vamos a exportar esto a nuestra parte mas alta, osea index.js
 export const firestoreInit = () => app;

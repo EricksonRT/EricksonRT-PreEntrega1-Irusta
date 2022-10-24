@@ -4,7 +4,7 @@ import './css/main.css';
 import { NavBar } from './components/NavBar/NavBar';
 import { ItemListContainer } from './components/ItemListContainer/ItemListContainer';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { CartWidget } from './components/CartWidget/CartWidget';
+import { CartPage } from './components/CartPage/CartPage';
 import { NotFound404 } from './components/NotFound404/NotFound404';
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
 import { Offers } from './components/Offers/Offers';
@@ -25,7 +25,7 @@ function App() {
             path="/ofertas"
             element={<Offers detalle="Proximamente..." />}
           />
-          <Route path="/cart" element={<CartWidget />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/404" element={<NotFound404 />} />
           <Route path="*" element={<Navigate to="/404" />} />
         </Routes>

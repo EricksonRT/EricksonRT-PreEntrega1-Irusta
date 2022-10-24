@@ -37,18 +37,18 @@ export const NavBar = () => {
               <NavLink
                 className="nav-link btn txtNav"
                 aria-current="page"
-                to="category/Mujer"
+                to="category/mujer"
               >
                 Mujer
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link btn txtNav" to="category/Hombre">
+              <NavLink className="nav-link btn txtNav" to="category/hombre">
                 Hombre
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link btn txtNav" to="category/Infantil">
+              <NavLink className="nav-link btn txtNav" to="category/infantil">
                 Infantiles
               </NavLink>
             </li>

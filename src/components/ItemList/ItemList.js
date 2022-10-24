@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-
+import './ItemList.css';
 export const ItemList = (props) => {
   const { datos } = props;
   return datos.map((datos) => (
@@ -12,12 +12,14 @@ export const ItemList = (props) => {
         }
         to={'/item/' + datos.id}
       >
-        <img
-          className="card-img-top"
-          src={datos.img}
-          alt={'img-avatar/' + datos.nombre}
-        />
-        <h2>{datos.nombre}</h2>
+        <div className="img-container">
+          <img
+            className="img-thumbnail img-fluid mx-auto d-block"
+            src={datos.imagen_url}
+            alt={'img-avatar/' + datos.nombre_producto}
+          />
+        </div>
+        <h2>{datos.nombre_producto}</h2>
       </NavLink>
     </div>
   ));

@@ -11,12 +11,13 @@ const CartContextProvider = ({ children }) => {
   const [listCart, SetListCart] = useState([]);
   const addItem = (producto) => {
     SetListCart([...listCart, producto]);
-    console.log(listCart);
   };
-
+  const cleanCart = () => {
+    SetListCart([]);
+  };
   return (
     //   Las funciones van a lo ultimo
-    <CartContext.Provider value={{ listCart, addItem }}>
+    <CartContext.Provider value={{ listCart, addItem, cleanCart }}>
       {children}
     </CartContext.Provider>
   );

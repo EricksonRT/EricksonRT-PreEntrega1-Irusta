@@ -61,7 +61,7 @@ export const Get_Items = () => {
     //   Acciones
     setTimeout(() => {
       res(datos);
-    }, 1000);
+    }, 3000);
     //rej
   });
 };
