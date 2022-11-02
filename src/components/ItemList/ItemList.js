@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 import './ItemList.css';
-export const ItemList = (props) => {
+export const ItemList = memo((props) => {
   const { datos } = props;
   return datos.map((datos) => (
     <div className="card cardImg" key={datos.id}>
@@ -14,14 +15,17 @@ export const ItemList = (props) => {
       >
         <div className="img-container">
           <img
-            className="img-thumbnail img-fluid mx-auto d-block"
+            className="img-resp mx-auto d-block"
             src={datos.imagen_url}
             alt={'img-avatar/' + datos.nombre_producto}
           />
         </div>
-        <h2>{datos.nombre_producto}</h2>
+        <hr />
+        <h5>{datos.nombre_producto}</h5>
+        <h4>$ {datos.precio} ARS</h4>
       </NavLink>
     </div>
   ));
-};
+});
+
 // Lista de todos losproductos

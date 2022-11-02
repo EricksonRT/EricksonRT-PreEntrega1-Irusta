@@ -9,6 +9,7 @@ import { NotFound404 } from './components/NotFound404/NotFound404';
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
 import { Offers } from './components/Offers/Offers';
 import CartContextProvider from './context/cartContext.js';
+import { AddNewProducts } from './components/AddNewProducts/AddNewProducts';
 function App() {
   return (
     <CartContextProvider>
@@ -27,6 +28,7 @@ function App() {
           />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/404" element={<NotFound404 />} />
+          <Route path="/newProducts" element={<AddNewProducts />} />
           <Route path="*" element={<Navigate to="/404" />} />
         </Routes>
       </BrowserRouter>

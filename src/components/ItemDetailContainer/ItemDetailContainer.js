@@ -1,6 +1,6 @@
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Get_Items } from '../Get_Items/Get_Items';
 import { ItemDetail } from '../ItemDetail/ItemDetail';
 import { Loading } from '../Loading/Loading';
 
@@ -10,14 +10,14 @@ export const ItemDetailContainer = () => {
   // Otro hook para capturar los datos de las categorias por url
   const { idProducto } = useParams();
   useEffect(() => {
+    // Obtenemos un doc de firestore
+    const db = getFirestore();
     if (idProducto) {
       // Si hay categoria, en vez de filtrar, lo busca directamente y devuelve un obj para pasarlo por prop, sino trae todo el catologo por defecto
-      Get_Items()
-        .then((productos) =>
-          Setproducto(
-            productos.find((productos) => productos.id === parseInt(idProducto))
-          )
-        )
+      //Obtener un documento en particular
+      const queryDoc = doc(db, 'productos', idProducto);
+      getDoc(queryDoc)
+        .then((resp) => Setproducto({ id: resp.id, ...resp.data() }))
         .catch((err) => console.log(err))
         .finally(() => {
           setLoading(false);
@@ -37,10 +37,11 @@ export const ItemDetailContainer = () => {
             ) : (
               <ItemDetail
                 id={producto.id}
-                nombre={producto.nombre}
+                nombre={producto.nombre_producto}
                 descripcion={producto.descripcion}
                 stock={producto.stock}
-                img={producto.img}
+                img_url={producto.imagen_url}
+                precio={producto.precio}
               />
             )}
           </div>

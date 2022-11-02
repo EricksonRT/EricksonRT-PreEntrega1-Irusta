@@ -63,19 +63,28 @@ export const NavBar = () => {
               </NavLink>
               <ul className="dropdown-menu">
                 <li>
-                  <button className="dropdown-item" to="#">
+                  <NavLink
+                    className="dropdown-item"
+                    to="category/zapatillas-de-mujer"
+                  >
                     Mujeres
-                  </button>
+                  </NavLink>
                 </li>
                 <li>
-                  <button className="dropdown-item" to="#">
+                  <NavLink
+                    className="dropdown-item"
+                    to="category/zapatillas-de-hombre"
+                  >
                     Hombre
-                  </button>
+                  </NavLink>
                 </li>
                 <li>
-                  <button className="dropdown-item" to="#">
+                  <NavLink
+                    className="dropdown-item"
+                    to="category/zapatillas-infantil"
+                  >
                     Infantiles
-                  </button>
+                  </NavLink>
                 </li>
               </ul>
             </li>
