@@ -7,11 +7,9 @@ export const ItemDetail = (props) => {
   const { id, nombre, descripcion, stock, img_url, precio } = props;
   // Esta función viaja por prop,  donde al darle al boton de comprar, nos retona la cantidad seleccionada, y con esos datos, enviamos al contexto
   const onAdd = (cant) => {
-    // console.log('onAdd:' + cant);
     addItem({ ...props, cant });
   };
 
-  // console.log(props);
   return (
     <div className="row justify-content-center">
       <div className="row ">
@@ -31,8 +29,8 @@ export const ItemDetail = (props) => {
             <h3 className="mt-5">$ {precio} ARS</h3>
             <ItemCount
               id={id}
-              stockInicial={1}
-              stockMaximo={stock}
+              stockInitial={1}
+              stockMax={stock}
               onAdd={onAdd}
               stock={stock}
               precio={precio}

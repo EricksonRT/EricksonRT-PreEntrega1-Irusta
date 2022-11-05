@@ -24,7 +24,7 @@ const CartContextProvider = ({ children }) => {
       // Agrega un nuevo producto
       SetListCart([...listCart, producto]);
     }
-    setCartVacio(false);
+    setCartEmpty(false);
   };
   // Comprueba si el producto ya ha sido cargado al carrito
   const isInCart = (id) => {
@@ -36,14 +36,14 @@ const CartContextProvider = ({ children }) => {
     listCart.reduce((acum, itemActual) => acum + itemActual.cant, 0);
 
   // Calcular total
-  const precioTotal = () => {
+  const priceTotal = () => {
     return listCart.reduce((acum, prod) => acum + prod.cant * prod.precio, 0);
   };
 
   // Limpia el carrito, y setea un valor de estado para manejar los botones
-  const [cartVacio, setCartVacio] = useState(true);
+  const [cartEmpty, setCartEmpty] = useState(true);
   const cleanCart = () => {
-    setCartVacio(true);
+    setCartEmpty(true);
     SetListCart([]);
   };
 
@@ -51,7 +51,7 @@ const CartContextProvider = ({ children }) => {
   const deleteProducto = (id) => {
     SetListCart(listCart.filter((item) => item.id !== id));
     if (listCart.length === 1) {
-      setCartVacio(true);
+      setCartEmpty(true);
     }
   };
   return (
@@ -59,11 +59,11 @@ const CartContextProvider = ({ children }) => {
     <CartContext.Provider
       value={{
         listCart,
-        cartVacio,
+        cartEmpty,
         addItem,
         cleanCart,
         isInCart,
-        precioTotal,
+        priceTotal,
         deleteProducto,
         totalItemsCart,
       }}

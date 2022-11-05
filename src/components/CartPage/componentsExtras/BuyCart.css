@@ -1,0 +1,38 @@
+.modal-v2 {
+  display: block !important;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.486);
+}
+.iconCheckCart {
+  width: 3em;
+}
+
+.alertLemon {
+  color: #212529;
+  background-color: #f1ff4bba;
+}
+.alertLemon {
+  background-color: #f1ff4bba !important;
+}
+.btnLemon {
+  background-color: #585858;
+  color: #ffff;
+}
+.btnLemon:hover {
+  background-color: #3c3b3b !important;
+  color: #ffff !important;
+}
+.iconClipToBoard {
+  height: 1.2em;
+  cursor: pointer !important;
+  margin-bottom: 2px;
+}
+.btn-iconClipToBoard:hover {
+  background-color: #eaff00ba !important;
+}
+.btn-iconClipToBoard {
+  margin-right: 20px;
+}
+.btn-iconClipToBoard:active {
+  background-color: #6f6f6fba !important;
+}

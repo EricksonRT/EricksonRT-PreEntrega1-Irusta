@@ -1,12 +1,11 @@
 import { useCartContext } from '../../context/cartContext.js';
-// import { ItemCount } from '../ItemCount/ItemCount.js';
 import './cartPage.css';
 import NotCart from './componentsExtras/NotCart.js';
 import { useState } from 'react';
 import BuyCart from './componentsExtras/BuyCart.js';
 import ItemCartPage from './ItemCartPage.js';
 export const CartPage = () => {
-  const { listCart, cartVacio, cleanCart, precioTotal } = useCartContext();
+  const { listCart, cartEmpty, cleanCart, priceTotal } = useCartContext();
   const [toBuy, setToBuy] = useState(false);
   return (
     <div>
@@ -29,14 +28,14 @@ export const CartPage = () => {
             </ol>
           </div>
         </div>
-        {cartVacio ? (
+        {cartEmpty ? (
           // no hay nada en el carrito
           <NotCart />
         ) : (
           <>
-            {precioTotal() > 0 && (
+            {priceTotal() > 0 && (
               <div className="col-6 mt-3 d-flex justify-content-center">
-                <h4>Total: ${precioTotal()}</h4>
+                <h4>Total: ${priceTotal()}</h4>
               </div>
             )}
             <div className="d-flex justify-content-center">

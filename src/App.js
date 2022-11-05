@@ -10,6 +10,7 @@ import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetail
 import { Offers } from './components/Offers/Offers';
 import CartContextProvider from './context/cartContext.js';
 import { AddNewProducts } from './components/AddNewProducts/AddNewProducts';
+import { MyBuy } from './components/MyBuy/MyBuy';
 function App() {
   return (
     <CartContextProvider>
@@ -17,10 +18,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
-          <Route
-            path="/category/:idCategoria"
-            element={<ItemListContainer />}
-          />
+          <Route path="/category/:idCategory" element={<ItemListContainer />} />
           <Route path="/item/:idProducto" element={<ItemDetailContainer />} />
           <Route
             path="/ofertas"
@@ -29,6 +27,7 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/404" element={<NotFound404 />} />
           <Route path="/newProducts" element={<AddNewProducts />} />
+          <Route path="/viewBuy" element={<MyBuy />} />
           <Route path="*" element={<Navigate to="/404" />} />
         </Routes>
       </BrowserRouter>

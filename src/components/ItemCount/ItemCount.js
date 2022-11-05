@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../ItemCount/itemCount.css';
 import { Link } from 'react-router-dom';
 export const ItemCount = (props) => {
-  const { stockInicial, stockMaximo, onAdd } = props;
+  const { stockInitial, stockMax, onAdd, stock } = props;
   const [cant, setCant] = useState(1);
   // Estado para manejar los botones
   const [isBuy, setIsBuy] = useState(false);
@@ -21,11 +21,15 @@ export const ItemCount = (props) => {
   };
   return (
     <>
-      <h5>Stock disponible: {stockMaximo}</h5>
+      {stock === 0 ? (
+        <h5 className="stockOff">¡Agotado!</h5>
+      ) : (
+        <h5>Stock disponible: {stockMax}</h5>
+      )}
       <div className="mt-2 d-flex justify-content-center">
         <button
           className="btn btn-ItemCount-css"
-          disabled={stockInicial >= cant}
+          disabled={stockInitial >= cant}
           onClick={delCount}
         >
           -
@@ -33,7 +37,7 @@ export const ItemCount = (props) => {
         <h5 className="text-Stock">{cant}</h5>
         <button
           className="btn btn-ItemCount-css"
-          disabled={cant >= stockMaximo}
+          disabled={cant >= stockMax}
           onClick={addCount}
         >
           +
@@ -55,7 +59,12 @@ export const ItemCount = (props) => {
             </Link>
           </>
         ) : (
-          <button id="btnBuy" className="btn" onClick={AddToCart}>
+          <button
+            id="btnBuy"
+            className="btn"
+            onClick={AddToCart}
+            disabled={stockInitial > stock}
+          >
             Comprar
           </button>
         )}

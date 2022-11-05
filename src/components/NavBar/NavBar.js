@@ -93,6 +93,11 @@ export const NavBar = () => {
                 Ofertas
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link btn txtNav" to="viewBuy">
+                Ver mi compra
+              </NavLink>
+            </li>
           </ul>
         </div>
         {/* Compoente con el Icono del carrito */}

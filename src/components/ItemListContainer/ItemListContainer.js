@@ -13,46 +13,24 @@ export const ItemListContainer = () => {
   const [datos, setDatos] = useState([]);
   const [loading, setLoading] = useState(true);
   // Otro hook para capturar los datos de las categorias por url
-  const { idCategoria } = useParams();
-  // console.log(idCategoria);
+  const { idCategory } = useParams();
 
   useEffect(() => {
     // Obtenemos un doc de firestore
     const db = getFirestore();
-
-    if (idCategoria) {
-      // Si hay categoria, filtra por seleccionado, sino trae todo el catologo por defecto
-      //usando un filtro, pasabamos la db, la coleccion, y el id de la categoria
-      const queryDoc = collection(db, 'productos');
-      const queryFilter = query(
-        queryDoc,
-        where('categoria', '==', idCategoria)
-      );
-      getDocs(queryFilter)
-        .then((resp) => {
-          setDatos(resp.docs.map((item) => ({ id: item.id, ...item.data() })));
-        })
-        .catch((err) => console.log(err))
-        .finally(() => {
-          setLoading(false);
-        });
-    } else {
-      const queryColection = collection(db, 'productos');
-      getDocs(queryColection)
-        .then((resp) => {
-          // setDatos();
-          setDatos(
-            resp.docs.map((items) => ({ id: items.id, ...items.data() }))
-          );
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }
-  }, [idCategoria]);
+    // Si hay categoria, filtra por seleccionado, sino trae todo el catologo por defecto
+    //usando un filtro, se pasa la db, la coleccion, y el id de la categoria
+    const queryDoc = collection(db, 'productos');
+    const queryFilter = idCategory
+      ? query(queryDoc, where('categoria', '==', idCategory))
+      : queryDoc;
+    getDocs(queryFilter)
+      .then((resp) => {
+        setDatos(resp.docs.map((items) => ({ id: items.id, ...items.data() })));
+      })
+      .catch((err) => err)
+      .finally(() => setLoading(false));
+  }, [idCategory]);
   return (
     <>
       {/* Componente del item */}
